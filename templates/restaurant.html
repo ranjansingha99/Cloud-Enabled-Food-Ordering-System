@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Set background color of the page */
+        body {
+            background-color: #808080; /* Medium grey color */
+        }
+
+        /* Center the product list */
+        .product-container {
+            margin-top: 20px; /* Add some space above the product list */
+            overflow: auto; /* Enable overflow scrolling */
+            max-height: 400px; /* Set max height for the table */
+        }
+
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            color: white; /* Set text color to white */
+        }
+
+        /* Set the background color for the table headings */
+        th {
+            background-color: #333; /* Dark grey background */
+            position: sticky; /* Make the top heading sticky */
+            top: 0; /* Stick to the top */
+            z-index: 1; /* Ensure the top heading stays above the table content */
+        }
+
+        /* Center the button on large screens */
+        @media (min-width: 992px) {
+            .btn-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* Style the button */
+        .btn-primary {
+            background-color: green;
+            color: white;
+            border: none;
+        }
+
+        /* Hover effect for the button */
+        .btn-primary:hover {
+            background-color: darkgreen;
+        }
+
+        /* Style the logout and back to home button */
+        .logout-btn {
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+
+        /* Hover effect for the logout and back to home button */
+        .logout-btn:hover {
+            background-color: darkblue;
+        }
+
+        /* Style the horizontal line */
+        hr {
+            border-color: #333; /* Dark grey color */
+        }
+
+        /* Style the header */
+        h1 {
+            color: #333; /* Set text color to white */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Orders are shown here</h1>
+        <hr> <!-- Dark horizontal line below the header -->
+        <div class="btn-container">
+            <a href="{{ url_for('logout') }}" class="btn btn-primary logout-btn"><b>Logout & Back to homepage</b></a>
+            <button type="submit" form="update-form" class="btn btn-primary"><b>Update Delivery Status</b></button>
+        </div>
+        <form action="/update_delivery" method="post" id="update-form">
+            <div class="product-container">
+                <table class="table table-striped">
+                    <!-- Table headers -->
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User Name</th>
+                            <th>Food Name</th>
+                            <th>Quantity</th>
+                            <th>Deliver Status</th>
+                        </tr>
+                    </thead>
+                    <!-- Product rows with checkboxes -->
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product[0] }}</td>
+                            <td>{{ product[1] }}</td>
+                            <td>{{ product[2] }}</td>
+                            <td>{{ product[3] }}</td>
+                            <td><input type="checkbox" name="product_ids[]" value="{{ product[0] }}" {% if product[4] == 1 %}checked{% endif %}></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

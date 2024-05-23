@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <style>
+        /* Set background color */
+        body {
+            background-color: #808080;
+            background-image: url('https://i.ibb.co/ZBXpKNv/food3.webp'); /* Background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the background image */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Style the form */
+        form {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Style the form labels */
+        label {
+            display: block;
+            margin-bottom: 10px; /* Increased margin */
+            font-weight: bold; /* Added font weight */
+        }
+
+        /* Style the form inputs */
+        input, select {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin-bottom: 15px; /* Increased margin */
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* Added border */
+            background-color: white; /* Set background color */
+        }
+
+        /* Style the submit button */
+        button {
+            width: calc(100% - 16px);
+            padding: 12px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Added transition effect */
+        }
+
+        /* Hover effect for the submit button */
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        /* Style for back button */
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgb(40, 40, 140);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove default link underline */
+            transition: background-color 0.3s; /* Added transition effect */
+        }
+
+        /* Hover effect for the back button */
+        .back-button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Place your order here</h1>
+    <form action="/add_product" method="post">
+        <label for="user_name">Customer Name:</label>
+        <input type="text" id="user_name" name="user_name" required><br>
+        
+        <label for="food_name">Food Item:</label>
+        <select id="food_name" name="food_name" required>
+            <option value="">Select food...</option>
+            <option value="Plain Maggie">Plain Maggie</option>
+            <option value="Chicken Maggie">Chicken Maggie</option>
+            <option value="Veg Roll">Veg Roll</option>
+            <option value="Paneer Roll">Paneer Roll</option>
+            <option value="Chicken Roll">Chicken Roll</option>
+            <option value="Tandoori Chicken Roll">Tandoori Chicken Roll</option>
+            <option value="French Fries">French Fries</option>
+            <option value="Alu Paratha">Alu Paratha</option>
+            <option value="Gobi Paratha">Gobi Paratha</option>
+            <option value="Paneer Paratha">Paneer Paratha</option>
+        </select><br>
+
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" required><br>
+
+        <button type="submit">Place order</button>
+    </form>
+
+    <!-- Back button to return to the launch page -->
+    <a href="{{ url_for('launch') }}" class="back-button">Back to homepage</a>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <style>
+        /* Set background color */
+        body {
+            background-color: #808080; /* Medium grey color */
+            background-image: url('https://i.ibb.co/ZBXpKNv/food3.webp'); /* Background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the background image */
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Container style */
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Order details style */
+        .order-details {
+            margin-bottom: 20px;
+        }
+
+        /* Table style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            text-align: left;
+            background-color: #f2f2f2;
+        }
+
+        /* Button container style */
+        .button-container {
+            text-align: center;
+            margin-top: 20px; /* Add space between headings and buttons */
+        }
+
+        /* Button style */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: green; /* Updated button color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .button:hover {
+            background-color: darkgreen; /* Updated button hover color */
+        }
+
+        /* Second button style */
+        .button:last-child {
+            background-color: rgb(40, 40, 140); /* Color for the second button */
+        }
+
+        .button:last-child:hover {
+            background-color: darkblue; /* Hover color for the second button */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your order details</h1>
+        <div class="order-details">
+            <table>
+                <tr>
+                    <th>Order ID</th>
+                    <th>User Name</th>
+                    <th>Food Name</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr>
+                    <td>{{ order[0] }}</td>
+                    <td>{{ order[1] }}</td>
+                    <td>{{ order[2] }}</td>
+                    <td>{{ order[3] }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="button-container">
+            <a href="{{ url_for('user') }}" class="button">Place more orders</a>
+            <a href="{{ url_for('launch') }}" class="button">Back to homepage</a>
+        </div>
+    </div>
+</body>
+</html>
