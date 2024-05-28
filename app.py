@@ -9,7 +9,7 @@ def get_db_connection():
     server = 'new-server-assign.database.windows.net'
     database = 'Ranjan_db_new'
     username = 'ranjan'
-    password = 'eet232192@'
+    password = '**********'
 
     conn = pymssql.connect(server=server, user=username, password=password, database=database)
     return conn
